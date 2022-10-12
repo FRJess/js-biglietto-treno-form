@@ -12,9 +12,9 @@ const discountJunior = 0.22;
 //sconto da applicare se senior
 const discountSenior = 0.40; 
 //prompt per chiedere al/alla cliente quanti km deve fare
-const kmTrip = parseInt(prompt ("Quanti km devi percorrere?")); 
+// const kmTrip = parseInt(prompt ("Quanti km devi percorrere?")); 
 //prompt per chiedere al/alla cliente quanti anni ha
-const age = parseInt(prompt ("Quanti anni hai?")); 
+// const age = parseInt(prompt ("Quanti anni hai?")); 
 //età junior
 const junior = 18; 
 //età senior
@@ -25,7 +25,7 @@ let finalDiscount;
 //calcolo del costo del viaggio prima degli eventuali sconti
 let costTrip = costKm * kmTrip;
 
-//istruzuioni condizionali per controllo dello sconto disponibile
+//istruzioni condizionali per controllo dello sconto disponibile
 if(age >= junior && age < senior){
   finalDiscount = 0
 }else if(age < junior){
@@ -44,7 +44,25 @@ let formatCurrency = new Intl.NumberFormat("it-IT", {
 }).format(finalCost);
 
 //stampo in pagina del risultato
-document.getElementById("risultato").innerHTML=`
-Per fare ${kmTrip}km, <br>
-il prezzo del tuo biglietto sarà di ${formatCurrency}.
-`
+// document.getElementById("risultato").innerHTML=`
+// Per fare ${kmTrip}km, <br>
+// il prezzo del tuo biglietto sarà di ${formatCurrency}.
+// `
+
+
+const btnInputOn = document.getElementById('btn-input-on');
+btnInputOn.addEventListener('click', function(){
+  const name = document.getElementById('input-name').value;
+  document.getElementById('output-name').innerHTML = name;
+  const kmTrip = document.getElementById('input2').value;
+  const age = document.getElementById('dropdown-menu').value;
+  document.getElementById('output-offer').innerHTML = age;
+  document.getElementById('input-name').value = '';
+});
+
+// const btnInputOff = document.getElementById('btn-input-off');
+// btnInputOff.addEventListener('click', function(){
+//   const name = document.getElementById('input-name').value;
+//   document.getElementById('output-name').innerHTML = " ";
+//   const kmTrip = document.getElementById('input2').value;
+// })
