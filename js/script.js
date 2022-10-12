@@ -5,8 +5,10 @@
 //va applicato uno sconto del 40% per gli over 65
 //L’output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
 
+//button reset
 const btnInputOff = document.getElementById('btn-input-off');
 
+//button on
 const btnInputOn = document.getElementById('btn-input-on');
 
 //costo km
@@ -36,13 +38,15 @@ let costTrip;
 //prezzo finale da pagare dopo eventuale sconto
 let finalCost;
 
+//dati per random carrozza
 const minCarrozza = 1;
 const maxCarrozza = 9;
-const minCP = 10000;
-const maxCP = 99999;
 
+//dati per random biglietto
+const minCB = 10000;
+const maxCB = 99999;
 
-
+//Function click per dati del biglietto
 btnInputOn.addEventListener('click', function(){
   
   fullName = document.getElementById('input-name').value;
@@ -61,7 +65,10 @@ btnInputOn.addEventListener('click', function(){
     finalDiscount = 0
   }
 
+  //calcolo costo viaggio
   costTrip = costKm * kmTrip;
+
+  // calcolo costo viaggio dopo sconto
   finalCost = costTrip - (costTrip * finalDiscount);
 
   //applicazione del formato valuta
@@ -70,13 +77,11 @@ btnInputOn.addEventListener('click', function(){
     currency: "EUR"
   }).format(finalCost);
 
+  //dati output
   document.getElementById('output-costo-biglietto').innerHTML = formatCurrency;
-
   document.getElementById('output-offer').innerHTML = finalDiscount;
-
   document.getElementById('carrozza').innerHTML = Math.floor(Math.random() * (maxCarrozza - minCarrozza + 1) + minCarrozza);
-
-  document.getElementById('codice-biglietto').innerHTML = Math.floor(Math.random() * (maxCP - minCP + 1) + minCP);
+  document.getElementById('codice-biglietto').innerHTML = Math.floor(Math.random() * (maxCB - minCB + 1) + minCP);
 });
 
 // RESET
