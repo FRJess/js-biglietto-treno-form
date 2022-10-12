@@ -22,6 +22,24 @@ const senior = 65;
 //sconto finale da applicare
 let finalDiscount;
 
+const btnInputOn = document.getElementById('btn-input-on');
+btnInputOn.addEventListener('click', function(){
+  const name = document.getElementById('input-name').value;
+  document.getElementById('output-name').innerHTML = name;
+  const kmTrip = document.getElementById('input2').value;
+  // document.getElementById('output-km').innerHTML = kmTrip;
+  const age = document.getElementById('dropdown-menu').value;
+  document.getElementById('output-offer').innerHTML = age;
+  document.getElementById('input-name').value = '';
+});
+
+const btnInputOff = document.getElementById('btn-input-off');
+btnInputOff.addEventListener('click', function(){
+  const name = document.getElementById('input-name').value = " ";
+  document.getElementById('output-name').innerHTML = " ";
+  const kmTrip = document.getElementById('input2').value = " ";
+})
+
 //calcolo del costo del viaggio prima degli eventuali sconti
 let costTrip = costKm * kmTrip;
 
@@ -50,19 +68,5 @@ let formatCurrency = new Intl.NumberFormat("it-IT", {
 // `
 
 
-const btnInputOn = document.getElementById('btn-input-on');
-btnInputOn.addEventListener('click', function(){
-  const name = document.getElementById('input-name').value;
-  document.getElementById('output-name').innerHTML = name;
-  const kmTrip = document.getElementById('input2').value;
-  const age = document.getElementById('dropdown-menu').value;
-  document.getElementById('output-offer').innerHTML = age;
-  document.getElementById('input-name').value = '';
-});
 
-// const btnInputOff = document.getElementById('btn-input-off');
-// btnInputOff.addEventListener('click', function(){
-//   const name = document.getElementById('input-name').value;
-//   document.getElementById('output-name').innerHTML = " ";
-//   const kmTrip = document.getElementById('input2').value;
-// })
+
