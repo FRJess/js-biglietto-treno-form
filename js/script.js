@@ -5,68 +5,87 @@
 //va applicato uno sconto del 40% per gli over 65
 //L’output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
 
+const btnInputOff = document.getElementById('btn-input-off');
+
+const btnInputOn = document.getElementById('btn-input-on');
+
 //costo km
 const costKm = 0.21; 
+
 //sconto da applicare se junior
 const discountJunior = 0.22; 
+
 //sconto da applicare se senior
 const discountSenior = 0.40; 
-//prompt per chiedere al/alla cliente quanti km deve fare
-// const kmTrip = parseInt(prompt ("Quanti km devi percorrere?")); 
-//prompt per chiedere al/alla cliente quanti anni ha
-// const age = parseInt(prompt ("Quanti anni hai?")); 
-//età junior
-const junior = 18; 
-//età senior
-const senior = 65; 
+
+//Nome e cognome della persona
+let fullName; 
+
+//km da percorrere
+let kmTrip; 
+
+//Fascia di età della persona
+let age; 
+
 //sconto finale da applicare
 let finalDiscount;
 
-const btnInputOn = document.getElementById('btn-input-on');
+//prezzo finale da pagare prima di eventuale sconto
+let costTrip;
+
+//prezzo finale da pagare dopo eventuale sconto
+let finalCost;
+
+
+
 btnInputOn.addEventListener('click', function(){
-  const name = document.getElementById('input-name').value;
-  document.getElementById('output-name').innerHTML = name;
-  const kmTrip = document.getElementById('input2').value;
-  // document.getElementById('output-km').innerHTML = kmTrip;
-  const age = document.getElementById('dropdown-menu').value;
-  document.getElementById('output-offer').innerHTML = age;
-  document.getElementById('input-name').value = '';
+  
+  fullName = document.getElementById('input-name').value;
+  kmTrip = document.getElementById('input-km').value;
+  age = document.getElementById('input-age').value;
+
+  document.getElementById('output-name').innerHTML = fullName;
+
+
+  //istruzioni condizionali per controllo dello sconto disponibile
+  if(age === "junior"){
+    finalDiscount = discountJunior
+  }else if(age === "senior"){
+    finalDiscount = discountSenior
+  }else{
+    finalDiscount = 0
+  }
+
+  costTrip = costKm * kmTrip;
+  finalCost = costTrip - (costTrip * finalDiscount);
+
+  //applicazione del formato valuta
+  let formatCurrency = new Intl.NumberFormat("it-IT", {
+    style: "currency",
+    currency: "EUR"
+  }).format(finalCost);
+
+  document.getElementById('output-costo-biglietto').innerHTML = formatCurrency;
+
+  document.getElementById('output-offer').innerHTML = finalDiscount;
+
+  document.getElementById('carrozza').innerHTML = Math.floor(Math.random() * (maxCarrozza - minCarrozza + 1) + minCarrozza);
+
+  document.getElementById('codice-biglietto').innerHTML = Math.floor(Math.random() * (maxCP - minCP + 1) + minCP);
 });
 
-const btnInputOff = document.getElementById('btn-input-off');
+// RESET
+
 btnInputOff.addEventListener('click', function(){
-  const name = document.getElementById('input-name').value = " ";
   document.getElementById('output-name').innerHTML = " ";
-  const kmTrip = document.getElementById('input2').value = " ";
+  document.getElementById('input-name').value = " ";
+  document.getElementById('input-km').value = " ";
+  document.getElementById('input-age').value = "Fascia di età";
+  document.getElementById('output-offer').innerHTML = " ";
+  document.getElementById('carrozza').innerHTML = " ";
+  document.getElementById('codice biglietto').innerHTML = " ";
+  document.getElementById('output-costo-biglietto').innerHTML = " ";
 })
-
-//calcolo del costo del viaggio prima degli eventuali sconti
-let costTrip = costKm * kmTrip;
-
-//istruzioni condizionali per controllo dello sconto disponibile
-if(age >= junior && age < senior){
-  finalDiscount = 0
-}else if(age < junior){
-  finalDiscount = discountJunior
-}else{
-  finalDiscount = discountSenior
-}
-
-//calcolo del costo del viaggio dopo applicazione degli eventuali sconti
-let finalCost = costTrip - (costTrip * finalDiscount);
-
-//applicazione del formato valuta
-let formatCurrency = new Intl.NumberFormat("it-IT", {
-  style: "currency",
-  currency: "EUR"
-}).format(finalCost);
-
-//stampo in pagina del risultato
-// document.getElementById("risultato").innerHTML=`
-// Per fare ${kmTrip}km, <br>
-// il prezzo del tuo biglietto sarà di ${formatCurrency}.
-// `
-
 
 
 

@@ -24,14 +24,19 @@ section img{
   transform: translate(-50%, -50%);
 }
 
-.overlay h1{
+.overlay h1, h2{
   color: #311d40;
-  text-shadow: 5px 5px 5px white;
+  text-shadow: 3px 3px 3px white;
 }
 
 .overlay p{
   color: #C1CDED;
   text-shadow: 5px 5px 5px #3C2050;
+}
+
+.dati-passeggero div{
+  color:#3C2050;
+  text-shadow: 2px 2px 2px white;
 }
 
 
