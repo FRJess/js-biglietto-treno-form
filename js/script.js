@@ -11,42 +11,42 @@ const btnInputOff = document.getElementById('btn-input-off');
 //button on
 const btnInputOn = document.getElementById('btn-input-on');
 
-//costo km
+//cost for 1 km
 const costKm = 0.21; 
 
-//sconto da applicare se junior
+//discount if the person is a junior
 const discountJunior = 0.22; 
 
-//sconto da applicare se senior
+//discount if the person is a senior
 const discountSenior = 0.40; 
 
-//Nome e cognome della persona
+//Name and surname of the person
 let fullName; 
 
-//km da percorrere
+//distance in km for the trip
 let kmTrip; 
 
-//Fascia di età della persona
+//Age group
 let age; 
 
-//sconto finale da applicare
+//available discount
 let finalDiscount;
 
-//prezzo finale da pagare prima di eventuale sconto
+//cost before discount
 let costTrip;
 
-//prezzo finale da pagare dopo eventuale sconto
+//cost after discount
 let finalCost;
 
-//dati per random carrozza
+//random range for place
 const minCarrozza = 1;
 const maxCarrozza = 9;
 
-//dati per random biglietto
+//random range for ticket
 const minCB = 10000;
 const maxCB = 99999;
 
-//Function click per dati del biglietto
+//Function click ticket datas
 btnInputOn.addEventListener('click', function(){
   
   fullName = document.getElementById('input-name').value;
@@ -65,19 +65,19 @@ btnInputOn.addEventListener('click', function(){
     finalDiscount = 0
   }
 
-  //calcolo costo viaggio
+  //calc trip cost
   costTrip = costKm * kmTrip;
 
-  // calcolo costo viaggio dopo sconto
+  // calc trip cost with discount
   finalCost = costTrip - (costTrip * finalDiscount);
 
-  //applicazione del formato valuta
+  //€uro currency transformation
   let formatCurrency = new Intl.NumberFormat("it-IT", {
     style: "currency",
     currency: "EUR"
   }).format(finalCost);
 
-  //dati output
+  //all output datas
   document.getElementById('output-costo-biglietto').innerHTML = formatCurrency;
   document.getElementById('output-offer').innerHTML = finalDiscount;
   document.getElementById('carrozza').innerHTML = Math.floor(Math.random() * (maxCarrozza - minCarrozza + 1) + minCarrozza);
