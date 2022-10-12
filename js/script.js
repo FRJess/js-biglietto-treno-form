@@ -36,6 +36,11 @@ let costTrip;
 //prezzo finale da pagare dopo eventuale sconto
 let finalCost;
 
+const minCarrozza = 1;
+const maxCarrozza = 9;
+const minCP = 10000;
+const maxCP = 99999;
+
 
 
 btnInputOn.addEventListener('click', function(){
