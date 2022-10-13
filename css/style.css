@@ -7,34 +7,43 @@ body{
   position: relative;
 }
 
-/* Image */
+/* Ticket position*/
 
-section img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Overlay */
-
-.overlay{
+.dati-passeggero{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.overlay h1, h2{
+/* Passenger datas styles*/
+
+.form-control:focus, .form-select:focus{
+  background-color: #311d40;
+  color: white;
+}
+
+.dati-passeggero h1, h2{
   color: #311d40;
   text-shadow: 3px 3px 3px white;
 }
 
-.overlay p{
+.dati-passeggero p{
   color: #C1CDED;
   text-shadow: 5px 5px 5px #3C2050;
 }
 
-.dati-passeggero div{
+.dati-passeggero .btn:hover{
+background-color: #3C2050;
+}
+
+/* Ticket styles*/
+
+.ticket{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.ticket div{
   color:#3C2050;
   text-shadow: 2px 2px 2px white;
 }

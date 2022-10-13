@@ -5,22 +5,24 @@
 //va applicato uno sconto del 40% per gli over 65
 //L’output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
 
-//button reset
-const btnInputOff = document.getElementById('btn-input-off');
+//VARIABLES DECLARATION AND INITIALIZATION
 
 //button on
 const btnInputOn = document.getElementById('btn-input-on');
 
+//button reset
+const btnInputOff = document.getElementById('btn-input-off');
+
 //cost for 1 km
 const costKm = 0.21; 
 
-//discount if the person is a junior
+//discount if the passenger is a junior
 const discountJunior = 0.22; 
 
-//discount if the person is a senior
+//discount if the passenger is a senior
 const discountSenior = 0.40; 
 
-//Name and surname of the person
+//passenger full name
 let fullName; 
 
 //distance in km for the trip
@@ -46,7 +48,8 @@ const maxCarrozza = 9;
 const minCB = 10000;
 const maxCB = 99999;
 
-//Function click ticket datas
+//FUNCTION CLICK TO COLLECT DATAS AND CREATE TICKET
+
 btnInputOn.addEventListener('click', function(){
   
   fullName = document.getElementById('input-name').value;
@@ -55,8 +58,7 @@ btnInputOn.addEventListener('click', function(){
 
   document.getElementById('output-name').innerHTML = fullName;
 
-
-  //istruzioni condizionali per controllo dello sconto disponibile
+  //Conditional statement for discount availability
   if(age === "junior"){
     finalDiscount = discountJunior
   }else if(age === "senior"){
@@ -65,10 +67,10 @@ btnInputOn.addEventListener('click', function(){
     finalDiscount = 0
   }
 
-  //calc trip cost
+  //Calc trip cost
   costTrip = costKm * kmTrip;
 
-  // calc trip cost with discount
+  // Calc trip cost with discount
   finalCost = costTrip - (costTrip * finalDiscount);
 
   //€uro currency transformation
@@ -80,11 +82,15 @@ btnInputOn.addEventListener('click', function(){
   //all output datas
   document.getElementById('output-costo-biglietto').innerHTML = formatCurrency;
   document.getElementById('output-offer').innerHTML = finalDiscount;
+
+  //random number for coach
   document.getElementById('carrozza').innerHTML = Math.floor(Math.random() * (maxCarrozza - minCarrozza + 1) + minCarrozza);
+
+  //random number for ticket
   document.getElementById('codice-biglietto').innerHTML = Math.floor(Math.random() * (maxCB - minCB + 1) + minCP);
 });
 
-// RESET
+// FUNCTION CLICK TO RESET ALL DATAS
 
 btnInputOff.addEventListener('click', function(){
   document.getElementById('output-name').innerHTML = " ";
@@ -94,7 +100,7 @@ btnInputOff.addEventListener('click', function(){
   document.getElementById('output-offer').innerHTML = " ";
   document.getElementById('carrozza').innerHTML = " ";
   document.getElementById('codice biglietto').innerHTML = " ";
-  document.getElementById('output-costo-biglietto').innerHTML = " ";
+  document.getElementById('output-costo-biglietto').value = " ";
 })
 
 
