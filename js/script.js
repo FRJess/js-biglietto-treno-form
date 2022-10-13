@@ -17,7 +17,7 @@ const btnInputOff = document.getElementById('btn-input-off');
 const costKm = 0.21; 
 
 //discount if the passenger is a junior
-const discountJunior = 0.22; 
+const discountJunior = 0.20; 
 
 //discount if the passenger is a senior
 const discountSenior = 0.40; 
