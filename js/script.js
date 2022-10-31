@@ -80,7 +80,7 @@ btnInputOn.addEventListener('click', function(){
   document.getElementById('carrozza').innerHTML = Math.floor(Math.random() * (maxCarrozza - minCarrozza + 1) + minCarrozza);
 
   //random number for ticket
-  document.getElementById('codice-biglietto').innerHTML = Math.floor(Math.random() * (maxCB - minCB + 1) + minCP);
+  document.getElementById('codice-biglietto').innerHTML = Math.floor(Math.random() * ((999999 - 100000) + 1) + 100000);
 });
 
 // FUNCTION CLICK TO RESET ALL DATAS
